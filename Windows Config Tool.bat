@@ -36,11 +36,10 @@ if "%choice%"=="3" goto WATERMARK
 if "%choice%"=="4" goto MAS
 if "%choice%"=="5" goto DETAILS
 if "%choice%"=="6" exit /B 0
-if "%choice%"=="" (
-echo [!] Please enter a number between 1 and 6.
+
+echo %esc%[91m [!] ERROR: "%choice%" is invalid. Please enter 1-6.%esc%[0m
 timeout /t 3 >nul
 goto MENU
-)
 
 :DARK
 reg add "HKCU\Software\Microsoft\Windows\CurrentVersion\Themes\Personalize" /v AppsUseLightTheme /t REG_DWORD /d 0 /f >nul
@@ -71,7 +70,7 @@ pause
 goto MENU
 
 :WATERMARK
-reg add  "HKLM\SYSTEM\CurrentControlSet\Services\sppsvc" /v Start /t REG_DWORD /d 4 /f
+reg add  "HKLM\SYSTEM\CurrentControlSet\Services\svsvc" /v Start /t REG_DWORD /d 4 /f
 echo Watermark service disabled. 
 echo %esc%[91mNOTE: You need to REBOOT your PC for the watermark to disappear.%esc%[0m
 pause
