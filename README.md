@@ -16,8 +16,8 @@ The activation logic in this script is powered by the **Microsoft Activation Scr
 - **Original Project:** https://github.com/massgravel/microsoft-activation-scripts
 - This batch file serves as a simplified wrapper and shortcut for their excellent work.
 
-## ⚠️ Disclaimer
+## Disclaimer
 *This tool is provided for educational purposes only. Modifying the Windows Registry and activating software via third-party scripts can carry risks. The author is not responsible for any system instability, data loss, or legal issues arising from the use of this tool. Use at your own risk.*
 
-## 📜 License
+## License
 Distributed under the **GNU GPLv3 License**. See `LICENSE` for more information.
