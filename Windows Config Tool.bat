@@ -13,8 +13,9 @@ if %errorLevel% neq 0 (
 
 set "esc= "
 for /F %%a in ('echo prompt $E ^| cmd') do set "esc=%%a"
-set "choice="
+
 :MENU
+set "choice="
 set 
 cls
 echo ============================================
