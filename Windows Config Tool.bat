@@ -1,6 +1,6 @@
 @echo off
 mode con: cols=45 lines=14
-title Windows Config Tool
+title Windows Config Tool By godblessmerica
 
 net session >nul 2>&1
 if %errorLevel% neq 0 (
@@ -35,9 +35,12 @@ if "%choice%"=="2" goto LIGHT
 if "%choice%"=="3" goto WATERMARK
 if "%choice%"=="4" goto MAS
 if "%choice%"=="5" goto DETAILS
-if "%choice%"=="6" exit
-
+if "%choice%"=="6" exit /B 0
+if "%choice%"=="" (
+echo [!] Please enter a number between 1 and 6.
+timeout /t 3 >nul
 goto MENU
+)
 
 :DARK
 reg add "HKCU\Software\Microsoft\Windows\CurrentVersion\Themes\Personalize" /v AppsUseLightTheme /t REG_DWORD /d 0 /f >nul
@@ -61,6 +64,7 @@ cls
 echo Applying changes...
 timeout /t 1 >nul
 start explorer.exe
+if %errorlevel% neq 0 start explorer.exe 
 echo.
 echo Mode applied successfully!
 pause
@@ -78,7 +82,7 @@ cls
 echo Starting Microsoft Activation Scripts...
 powershell -NoProfile -ExecutionPolicy Bypass -Command "irm https://get.activated.win | iex"
 
-if %errorlevel% neq 0 (
+if %errorLevel% neq 0 (
     echo.
     echo  [!] Standard connection blocked or failed.
     echo  [!] Attempting Secure DNS (DoH) Bypass via Cloudflare...
