@@ -16,7 +16,6 @@ for /F %%a in ('echo prompt $E ^| cmd') do set "esc=%%a"
 
 :MENU
 set "choice="
-set 
 cls
 echo ============================================
 echo             Windows Config Tool
@@ -39,6 +38,41 @@ if "%choice%"=="5" goto DETAILS
 if "%choice%"=="6" exit
 
 goto MENU
+
+:DARK
+reg add "HKCU\Software\Microsoft\Windows\CurrentVersion\Themes\Personalize" /v AppsUseLightTheme /t REG_DWORD /d 0 /f >nul
+reg add "HKCU\Software\Microsoft\Windows\CurrentVersion\Themes\Personalize" /v SystemUsesLightTheme /t REG_DWORD /d 0 /f >nul
+goto REFRESH
+
+:LIGHT
+reg add "HKCU\Software\Microsoft\Windows\CurrentVersion\Themes\Personalize" /v AppsUseLightTheme /t REG_DWORD /d 1 /f >nul
+reg add "HKCU\Software\Microsoft\Windows\CurrentVersion\Themes\Personalize" /v SystemUsesLightTheme /t REG_DWORD /d 1 /f >nul
+goto REFRESH
+
+:REFRESH
+taskkill /f /im explorer.exe >nul 2>&1
+cls
+echo Applying changes.
+timeout /t 1 >nul
+cls
+echo Applying changes..
+timeout /t 1 >nul
+cls
+echo Applying changes...
+timeout /t 1 >nul
+start explorer.exe
+echo.
+echo Mode applied successfully!
+pause
+goto MENU
+
+:WATERMARK
+reg add  "HKLM\SYSTEM\CurrentControlSet\Services\sppsvc" /v Start /t REG_DWORD /d 4 /f
+echo Watermark service disabled. 
+echo %esc%[91mNOTE: You need to REBOOT your PC for the watermark to disappear.%esc%[0m
+pause
+goto MENU
+
 :MAS
 cls
 echo Starting Microsoft Activation Scripts...
@@ -54,42 +88,6 @@ if %errorlevel% neq 0 (
 
 echo.
 echo  Process complete.
-pause
-goto MENU
-
-
-:DARK
-reg add "HKCU\Software\Microsoft\Windows\CurrentVersion\Themes\Personalize" /v AppsUseLightTheme /t REG_DWORD /d 0 /f >nul
-reg add "HKCU\Software\Microsoft\Windows\CurrentVersion\Themes\Personalize" /v SystemUsesLightTheme /t REG_DWORD /d 0 /f >nul
-goto REFRESH
-
-:LIGHT
-reg add "HKCU\Software\Microsoft\Windows\CurrentVersion\Themes\Personalize" /v AppsUseLightTheme /t REG_DWORD /d 1 /f >nul
-reg add "HKCU\Software\Microsoft\Windows\CurrentVersion\Themes\Personalize" /v SystemUsesLightTheme /t REG_DWORD /d 1 /f >nul
-goto REFRESH
-
-:WATERMARK
-reg add  "HKLM\SYSTEM\CurrentControlSet\Services\svsvc" /v Start /t REG_DWORD /d 4 /f
-echo Watermark service disabled. 
-echo %esc%[91mNOTE: You need to REBOOT your PC for the watermark to disappear.%esc%[0m
-pause
-goto MENU
-
-:REFRESH
-taskkill /f /im explorer.exe >nul 2>&1
-cls
-echo Applying changes.
-timeout /t 1 >nul
-cls
-echo Applying changes..
-timeout /t 1 >nul
-cls
-echo Applying changes...
-timeout /t 1 >nul
-
-start explorer.exe
-echo.
-echo Mode applied successfully!
 pause
 goto MENU
 
