@@ -71,8 +71,7 @@ goto REFRESH
 :WATERMARK
 reg add  "HKLM\SYSTEM\CurrentControlSet\Services\svsvc" /v Start /t REG_DWORD /d 4 /f
 echo Watermark service disabled. 
-echo %esc%[91mNOTE: You need to REBOOT your PC for the%esc%[0m
-echo %esc%[91mwatermark to disappear.%esc%[0m
+echo %esc%[91mNOTE: You need to REBOOT your PC for the watermark to disappear.%esc%[0m
 pause
 goto MENU
 
