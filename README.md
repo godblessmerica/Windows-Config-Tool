@@ -1,4 +1,4 @@
-# 🛠️ Windows Config Tool (CURRENTLY IN BETA)
+# 🛠️ Windows Config Tool 
 
 A lightweight batch utility for users who have unactivated Windows and want to customize Windows without having to dig through the registry themselves. It is for Windows 11.
 
@@ -34,7 +34,8 @@ The activation logic in this script is powered by the **Microsoft Activation Scr
 ---
 
 ## ⚠️ Disclaimer
-
+> **Status:** ⚠️ **Pre-release (Alpha)**  
+> This tool is in active development. Expect changes.
 *This tool is provided for educational purposes only. Modifying the Windows Registry and activating software via third-party scripts can carry risks. The author is not responsible for any system instability, data loss, or legal issues arising from the use of this tool. Use at your own risk.*
 
 ## 📜 License
