@@ -13,7 +13,7 @@ A lightweight batch utility for users who want to customaize windows without hav
 
 ## Giving Credit Where It Is Due
 The activation logic in this script is powered by the **Microsoft Activation Scripts (MAS)** project by **massgravel**. 
-- **Original Project:** [massgravel/microsoft-activation-scripts](https://github.com)
+- **Original Project:** https://github.com/massgravel/microsoft-activation-scripts
 - This batch file serves as a simplified wrapper and shortcut for their excellent work.
 
 ## ⚠️ Disclaimer
