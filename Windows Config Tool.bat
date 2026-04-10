@@ -13,8 +13,9 @@ if %errorLevel% neq 0 (
 
 set "esc= "
 for /F %%a in ('echo prompt $E ^| cmd') do set "esc=%%a"
-
+set "choice="
 :MENU
+set 
 cls
 echo ============================================
 echo             Windows Config Tool
@@ -57,19 +58,19 @@ goto MENU
 
 
 :DARK
-reg add "HKCU\Software\Microsoft\Windows\CurrentVersion\Themes\Personalize" /v AppsUseLightTheme /t REG_DWORD /d 0 /f
-reg add "HKCU\Software\Microsoft\Windows\CurrentVersion\Themes\Personalize" /v SystemUsesLightTheme /t REG_DWORD /d 0 /f
+reg add "HKCU\Software\Microsoft\Windows\CurrentVersion\Themes\Personalize" /v AppsUseLightTheme /t REG_DWORD /d 0 /f >nul
+reg add "HKCU\Software\Microsoft\Windows\CurrentVersion\Themes\Personalize" /v SystemUsesLightTheme /t REG_DWORD /d 0 /f >nul
 goto REFRESH
 
 :LIGHT
-reg add "HKCU\Software\Microsoft\Windows\CurrentVersion\Themes\Personalize" /v AppsUseLightTheme /t REG_DWORD /d 1 /f
-reg add "HKCU\Software\Microsoft\Windows\CurrentVersion\Themes\Personalize" /v SystemUsesLightTheme /t REG_DWORD /d 1 /f
+reg add "HKCU\Software\Microsoft\Windows\CurrentVersion\Themes\Personalize" /v AppsUseLightTheme /t REG_DWORD /d 1 /f >nul
+reg add "HKCU\Software\Microsoft\Windows\CurrentVersion\Themes\Personalize" /v SystemUsesLightTheme /t REG_DWORD /d 1 /f >nul
 goto REFRESH
 
 :WATERMARK
 reg add  "HKLM\SYSTEM\CurrentControlSet\Services\svsvc" /v Start /t REG_DWORD /d 4 /f
 echo Watermark service disabled. 
-echo NOTE: You might need to REBOOT your PC for the watermark to disappear.
+echo %esc%[91mNOTE: You need to REBOOT your PC for the watermark to disappear.%esc%[0m
 pause
 goto MENU
 
