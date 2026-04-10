@@ -1,5 +1,5 @@
 @echo off
-mode con: cols=45 lines=13
+mode con: cols=45 lines=14
 title Windows Config Tool
 
 net session >nul 2>&1
