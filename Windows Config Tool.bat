@@ -76,7 +76,6 @@ pause
 goto MENU
 
 :REFRESH
-:: Kill Explorer first so the screen is "working" during the dots
 taskkill /f /im explorer.exe >nul 2>&1
 cls
 echo Applying changes.
@@ -88,7 +87,6 @@ cls
 echo Applying changes...
 timeout /t 1 >nul
 
-:: Restart Explorer after the animation
 start explorer.exe
 echo.
 echo Mode applied successfully!
