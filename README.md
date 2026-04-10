@@ -28,7 +28,7 @@ A lightweight batch utility for users who want to customize Windows without havi
 
 The activation logic in this script is powered by the **Microsoft Activation Scripts (MAS)** project by **massgravel**. 
 
-* **Original Project:** [MAS GitHub Repository][https://github.com/massgravel/microsoft-activation-scripts]
+* **Original Project:** [MAS GitHub Repository](https://github.com/massgravel/microsoft-activation-scripts)
 * This batch file serves as a simplified wrapper and shortcut for their excellent work.
 
 ---
