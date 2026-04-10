@@ -1,4 +1,4 @@
-# 🛠️ Windows Config Tool
+# 🛠️ Windows Config Tool (CURRENTLY IN BETA)
 
 A lightweight batch utility for users who have unactivated Windows and want to customize Windows without having to dig through the registry themselves. It is for Windows 11.
 
