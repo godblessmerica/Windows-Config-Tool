@@ -1,6 +1,6 @@
 # 🛠️ Windows Config Tool
 
-A lightweight batch utility for users who want to customize Windows without having to dig through the registry themselves. This tool is specifically designed for users with unactivated Windows where personalization settings are locked. It is for Windows 11.
+A lightweight batch utility for users who have unactivated Windows and want to customize Windows without having to dig through the registry themselves. It is for Windows 11.
 
 ## ✨ Features
 
