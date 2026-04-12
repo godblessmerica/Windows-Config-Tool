@@ -63,14 +63,17 @@ cls
 echo Applying changes...
 timeout /t 1 >nul
 start explorer.exe
-if %errorlevel% neq 0 start explorer.exe 
+if %errorlevel% neq 0 (
+    timeout /t 2 >nul
+    start explorer.exe
+)
 echo.
 echo Mode applied successfully!
 pause
 goto MENU
 
 :WATERMARK
-reg add  "HKLM\SYSTEM\CurrentControlSet\Services\svsvc" /v Start /t REG_DWORD /d 4 /f
+reg add "HKCU\Control Panel\Desktop" /v PaintDesktopVersion /t REG_DWORD /d 0 /f
 echo Watermark service disabled. 
 echo %esc%[91mNOTE: You need to REBOOT your PC for the watermark to disappear.%esc%[0m
 pause
