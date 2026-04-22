@@ -63,8 +63,10 @@ cls
 echo Applying changes...
 timeout /t 1 >nul
 start explorer.exe
+timeout /t 2 >nul
+tasklist /fi "imagename eq explorer.exe" 2>nul | find /i "explorer.exe" >nul
 if %errorlevel% neq 0 (
-    timeout /t 2 >nul
+    echo   %esc%[91m[!] Explorer failed to start.%esc%[0m Retrying...
     start explorer.exe
 )
 echo.
@@ -73,7 +75,7 @@ pause
 goto MENU
 
 :WATERMARK
-reg add "HKCU\Control Panel\Desktop" /v PaintDesktopVersion /t REG_DWORD /d 0 /f
+reg add "HKCU\Control Panel\Desktop" /v PaintDesktopVersion /t REG_DWORD /d 0 /f >nul
 echo Watermark service disabled. 
 echo %esc%[91mNOTE: You need to REBOOT your PC for the watermark to disappear.%esc%[0m
 pause
