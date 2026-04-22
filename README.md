@@ -7,8 +7,8 @@ A lightweight batch utility for users who have unactivated Windows and want to c
 ## Features
 
 *  **Theme Change:** Force Enable Dark Mode or Light Mode.
-*  **Watermark Removal:** Disables the "Activate Windows" watermark (Requires Reboot).
-*  **MAS Integrated:** Built-in integration with MAS to permanently activate Windows.
+*  **Watermark Removal:** Disables the "Activate Windows" watermark (requires reboot).
+*  **MAS Integrated:** Built-in integration with [MAS](https://github.com/massgravel/microsoft-activation-scripts) to permanently activate Windows.
 *  **UI Refresh:** Automatically restarts Windows Explorer to apply theme changes.
 
 ---
