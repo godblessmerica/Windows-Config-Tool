@@ -1,19 +1,19 @@
-# 🛠️ Windows Config Tool 
-> **Status:** ⚠️ **Pre-release (Alpha)**  
+# Windows Config Tool 
+> **Status:**  **Pre-release (Alpha)**  
 > This tool is in active development. Expect errors and changes.
 
 A lightweight batch utility for users who have unactivated Windows and want to customize Windows without having to dig through the registry themselves. It is for Windows 11.
 
-## ✨ Features
+## Features
 
-* 🌓 **Theme Change:** Force Enable Dark Mode or Light Mode.
-* ✂️ **Watermark Removal:** Disables the "Activate Windows" watermark (Requires Reboot).
-* 🔐 **MAS Integrated:** Built-in integration with MAS to permanently activate Windows.
-* 🎨 **UI Refresh:** Automatically restarts Windows Explorer to apply theme changes.
+*  **Theme Change:** Force Enable Dark Mode or Light Mode.
+*  **Watermark Removal:** Disables the "Activate Windows" watermark (Requires Reboot).
+*  **MAS Integrated:** Built-in integration with MAS to permanently activate Windows.
+*  **UI Refresh:** Automatically restarts Windows Explorer to apply theme changes.
 
 ---
 
-## 🚀 How To Use
+## Usage
 
 1. **Download** the `.bat` file.
 2. **Right-click** the file and **Run as Administrator** (this is required to edit the registry files and run MAS).
@@ -26,7 +26,7 @@ A lightweight batch utility for users who have unactivated Windows and want to c
 
 ---
 
-## 🤝 Giving Credit Where It Is Due
+## Credit
 
 The activation logic in this script is powered by the **Microsoft Activation Scripts (MAS)** project by **massgravel**. 
 
@@ -35,9 +35,9 @@ The activation logic in this script is powered by the **Microsoft Activation Scr
 
 ---
 
-## ⚠️ Disclaimer
+## Disclaimer
 *This tool is provided for educational purposes only. Modifying the Windows Registry and activating software via third-party scripts can carry risks. The author is not responsible for any system instability, data loss, or legal issues arising from the use of this tool. Use at your own risk.*
 
-## 📜 License
+## License
 
 Distributed under the **GNU GPLv3 License**. See the `LICENSE` file in this repository for more information.
