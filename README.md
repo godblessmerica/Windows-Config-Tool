@@ -2,29 +2,22 @@
 > **Status:**  **Pre-release (Alpha)**  
 > This tool is in active development. Expect errors and changes.
 
-A lightweight batch utility for users who have unactivated Windows and want to customize Windows without having to dig through the registry themselves. It is for Windows 11.
+A light weight batch utility for users with unactivated windows and are to lazy to dig through registry themselves. Compatible only with Windows 11.
 
 ## Features
-
-*  **Theme Change:** Force Enable Dark Mode or Light Mode.
-*  **Watermark Removal:** Disables the "Activate Windows" watermark (requires reboot).
-*  **MAS Integrated:** Built-in integration with [MAS](https://github.com/massgravel/microsoft-activation-scripts) to permanently activate Windows.
-*  **UI Refresh:** Automatically restarts Windows Explorer to apply theme changes.
-
----
+- Force enable light/dark mode.
+- Removes Windows watermark (unverified, if it works the watermark may return later)
+- [MAS](https://github.com/massgravel/microsoft-activation-scripts) intergration to permanently activate windows.
 
 ## Usage
-
-1. **Download** the `.bat` file.
-2. **Right-click** the file and **Run as Administrator** (this is required to edit the registry files and run MAS).
-3. **Choose an option** from the menu:
-    * **Changing themes (Options 1 & 2):** Changes the system theme, then restarts Windows Explorer to apply the change.
-    * **Remove Watermark (Option 3):** Removes the activation watermark. For this to take effect, you must restart your PC.
-    * **MAS (Option 4):** Launches the external MAS interface. From this point forward, the user must follow the instructions provided by the MAS tool. I do not control the MAS interface; please use the [Official MAS Documentation](https://massgrave.dev) if you are unsure which activation method to choose.
-    * **More Details (Option 5):** Opens the link to the official MAS project page.
-    * **Exit (Option 6):** Closes the Windows Config Tool.
-
----
+1. Download the `.bat` file from [latest release](../../releases/latest).
+2. Run the `.bat` file as administrator.
+3. Choose a option
+   * Enable light/dark mode: Change theme between dark/light.
+   * Remove Activation Watermark: Temporarily removes activation watermark, unstable require reboot to take effect.
+   * MAS: Launches MAS online launcher, please use the [Official MAS Documentation](https://massgrave.dev) if you are unsure which activation method to choose.
+   * More Details: Opens link to the official [MAS](https://github.com/massgravel/microsoft-activation-scripts) project page.
+   * Exit: Closes terminal.
 
 ## Credit
 
@@ -32,8 +25,6 @@ The activation logic in this script is powered by the **Microsoft Activation Scr
 
 * **Original Project:** [MAS GitHub Repository](https://github.com/massgravel/microsoft-activation-scripts)
 * This batch file serves as a simplified wrapper and shortcut for their excellent work.
-
----
 
 ## Disclaimer
 *This tool is provided for educational purposes only. Modifying the Windows Registry and activating software via third-party scripts can carry risks. The author is not responsible for any system instability, data loss, or legal issues arising from the use of this tool. Use at your own risk.*
