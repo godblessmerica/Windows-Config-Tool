@@ -2,15 +2,6 @@
 mode con: cols=45 lines=14
 title Windows Config Tool By godblessmerica
 
-net session >nul 2>&1
-if %errorLevel% neq 0 (
-    echo.
-    echo  [!] ERROR: Please Right-Click and 'Run as Administrator'
-    echo.
-    pause
-    exit /B
-)
-
 set "esc= "
 for /F %%a in ('echo prompt $E ^| cmd') do set "esc=%%a"
 
@@ -43,60 +34,68 @@ goto MENU
 
 :DARK
 reg add "HKCU\Software\Microsoft\Windows\CurrentVersion\Themes\Personalize" /v AppsUseLightTheme /t REG_DWORD /d 0 /f >nul
+if errorlevel 1 (
+    echo ERROR: Could not change the app theme.
+    pause
+    goto MENU
+)
+
 reg add "HKCU\Software\Microsoft\Windows\CurrentVersion\Themes\Personalize" /v SystemUsesLightTheme /t REG_DWORD /d 0 /f >nul
-goto REFRESH
+if errorlevel 1 (
+    echo ERROR: Could not change the system theme.
+    pause
+    goto MENU
+)
+
+echo Restart explorer to apply change.
+pause
+goto MENU
 
 :LIGHT
 reg add "HKCU\Software\Microsoft\Windows\CurrentVersion\Themes\Personalize" /v AppsUseLightTheme /t REG_DWORD /d 1 /f >nul
-reg add "HKCU\Software\Microsoft\Windows\CurrentVersion\Themes\Personalize" /v SystemUsesLightTheme /t REG_DWORD /d 1 /f >nul
-goto REFRESH
-
-:REFRESH
-taskkill /f /im explorer.exe >nul 2>&1
-cls
-echo Applying changes.
-timeout /t 1 >nul
-cls
-echo Applying changes..
-timeout /t 1 >nul
-cls
-echo Applying changes...
-timeout /t 1 >nul
-start explorer.exe
-timeout /t 2 >nul
-tasklist /fi "imagename eq explorer.exe" 2>nul | find /i "explorer.exe" >nul
-if %errorlevel% neq 0 (
-    echo   %esc%[91m[!] Explorer failed to start.%esc%[0m Retrying...
-    start explorer.exe
+if errorlevel 1 (
+    echo ERROR: Could not change the app theme.
+    pause
+    goto MENU
 )
-echo.
-echo Mode applied successfully!
+
+reg add "HKCU\Software\Microsoft\Windows\CurrentVersion\Themes\Personalize" /v SystemUsesLightTheme /t REG_DWORD /d 1 /f >nul
+if errorlevel 1 (
+    echo ERROR: Could not change the system theme.
+    pause
+    goto MENU
+)
+
+echo Restart explorer to apply change.
 pause
 goto MENU
 
 :WATERMARK
-reg add "HKCU\Control Panel\Desktop" /v PaintDesktopVersion /t REG_DWORD /d 0 /f >nul
-echo Watermark service disabled. 
-echo %esc%[91mNOTE: You need to REBOOT your PC for the watermark to disappear.%esc%[0m
+reg add "HKLM\SYSTEM\CurrentControlSet\Services\svsvc" /v Start /t REG_DWORD /d 4 /f
+
+if errorlevel 1 (
+    echo ERROR: Could not change the service setting. Run as administrator.
+    pause
+    goto MENU
+)
+echo Service setting changed.
+echo Restart your PC to check whether the watermark is hidden.
+echo This workaround may be temporary.
 pause
 goto MENU
 
 :MAS
 cls
-echo Starting Microsoft Activation Scripts...
-powershell -NoProfile -ExecutionPolicy Bypass -Command "irm https://get.activated.win | iex"
+echo Running MAS...
 
-if %errorLevel% neq 0 (
+powershell.exe -NoProfile -Command "$ErrorActionPreference='Stop'; try { irm https://get.activated.win | iex } catch { exit 1 }"
+
+if errorlevel 1 (
     echo.
-    echo  [!] Standard connection blocked or failed.
-    echo  [!] Attempting Secure DNS (DoH) Bypass via Cloudflare...
-    echo.
-    powershell -NoProfile -ExecutionPolicy Bypass -Command "iex (curl.exe -s --doh-url https://1.1.1.1/dns-query https://get.activated.win | Out-String)"
+    echo ERROR: Could not run MAS. Check your internet connection.
+    pause
 )
 
-echo.
-echo  Process complete.
-pause
 goto MENU
 
 :DETAILS
